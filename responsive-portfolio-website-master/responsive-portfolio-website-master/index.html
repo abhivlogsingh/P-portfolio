@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My awesome portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+</head>
+
+
+
+
+<style>
+    
+
+    #whatsapp-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #d33dcb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a0909;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-bottom: 10px; /* Adjust margin as needed */
+    }
+
+    #whatsapp-icon:hover {
+      background-color: #d33dcb;
+    }
+
+    #whatsapp-icon span {
+      transition: transform 0.3s;
+    }
+
+    #popup-form {
+      display: none;
+      position: fixed;
+      background-color: #303245;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+
+    #whatsapp-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #d33dcb;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1000; /* Adjust as needed */
+}
+
+.waicon .fi-brands-whatsapp::before {
+  font-size: 25px;
+  line-height: 1.8 !important;
+}
+
+#whatsapp-icon:hover {
+  background-color: #d33dcb;
+}
+
+#whatsapp-icon span {
+  transition: transform 0.3s;
+  font-size: 23px;
+}
+
+.form1{
+    background-color: #15172b;
+    padding: 5px 15px;
+    
+    /* border-radius: 20px;  */
+}
+
+#popup-form {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #0d0c0c;
+  border: 1px solid #151414;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Adjust as needed, lower than WhatsApp icon */
+}
+
+#close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.tx{
+    padding-bottom: 15px;
+    color: white;
+}
+
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+.ic1 {
+  margin-top: 30px;
+}
+
+.ic2 {
+  margin-top: 20px;
+}
+
+.ic3 {
+ margin-top: 20px;
+}
+.ic4 {
+ margin-top: 20px;
+}
+.ic5 {
+ margin-top: 20px;
+}
+.ic6 {
+ margin-top: 20px;
+ height: 100px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #b4b4c9;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #808097;
+}
+
+.input:focus ~ .placeholder {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #d33dcb;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 45px;
+  margin-top: 30px;
+  outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: rgb(143, 0, 187);
+}
+
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  #whatsapp-icon {
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+  }
+
+  #popup-form {
+    bottom: 60px;
+    right: 10px;
+  }
+}
+  </style>
+
+<body>
+    <div class="site-main-wrapper">
+        <button class="hamberger">
+            <img src="./images/hamberger.svg" alt="">
+        </button>
+
+        <div class="mobile-nav">
+            <button class="times"><img src="./images/times.svg" alt=""></button>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        <header>
+            <div class="container">
+                <nav id="main-nav" class="flex items-center justify-between">
+                    <div class="left flex items-center">
+                        <div class="branding">
+                            <img src="./images/logo.svg" alt="">
+                        </div>
+                        <div>
+                            <a href="#">Home</a>
+                            <a href="#about">About</a>
+                            <a href="#services">Services</a>
+                            <a href="#work">Work</a>
+                            <a href="#blog">Blog</a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="btn btn-primary">Contact</button>
+                    </div>
+                </nav>
+                <div class="hero flex items-center justify-between">
+                    <div class="left flex-1 flex justify-center">
+                        <img src="./images/download (1).gif" alt="">
+                    </div>
+                    <div class="right flex-1">
+                        <h6> Pratiksha Singh </h6>
+                        <h1>I’m a Creative <span>Developer</span></h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco
+                            laboris
+                            nisi ut aliquip ex ea commodo consequat</p>
+                        <div>
+                            <button class="btn btn-secondary">DOWNLOAD CV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="whatsapp-icon" onclick="togglePopup()">
+            <span><i class="fi fi-brands-whatsapp"></i></span>
+          </div>
+        
+          <div id="popup-form">
+            <div id="close-icon" onclick="togglePopup()">&#10005;</div>
+            <h2 class="tx">Contact With Open Chat </h2>
+            <form class="form1">
+              <!-- Add your form fields here -->
+
+              <!-- <label for="name"><span>  Name <span class="required">*</span></span>
+              <input type="text" id="name" name="name" required></label><br> -->
+
+              <div class="input-container ic1">
+                <input id="firstname" class="input" type="text" placeholder=" " />
+                <div class="cut"></div>
+                <label for="firstname" class="placeholder">First name</label>
+              </div>
+
+
+              <div class="input-container ic2">
+                <input id="lastname" class="input" type="text" placeholder=" " />
+                <div class="cut"></div>
+                <label for="lastname" class="placeholder">Last name</label>
+              </div>
+
+
+              <div class="input-container ic3">
+                <input id="email" class="input" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="email" class="placeholder">Email</label>
+              </div>
+
+              <div class="input-container ic4">
+                <input id="email" class="input" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="email" class="placeholder">Contact num..</label>
+              </div>
+<!-- 
+              <label for="field2"><span>Email <span class="required">*</span></span>
+              <input type="text" class="input-field" name="field2" value="" /></label><br> -->
+
+              <div class="input-container ic5">
+                <input id="email" class="input" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="email" class="placeholder">Subject</label>
+                <!-- <select name="field4" class="field-select">
+                    <option value="Advertise">Advertise</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="General Question">General</option>
+                    </select> -->
+              </div>
+        
+
+
+              <div class="input-container ic6">
+                <input id="email" class="input" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="email" class="placeholder">Your Message</label>
+              
+                <!-- <label>Your Message <span class="required">*</span></label><br> -->
+                <!-- <textarea name="field5" id="field5" class="field-long field-textarea"></textarea><br> -->
+            </div>
+
+            <button type="text" class="submit">submit</button>
+        
+
+
+            </form>
+          </div>
+
+
+
+
+
+
+
+
+
+
+        <section id="about" class="about">
+            <div class="container flex items-center about-inner-wrap">
+                <div class="flex-1">
+                    <img class="about-me-img" src="./images/pratiksha22.png" alt="">
+                </div>
+                <div class="flex-1 right">
+                    <h1>About <span>Me</span></h1>
+                    <h3>Hello! i’m Pratiksha Singh.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                        Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat</p>
+                    <div class="social">
+                        <a href="#"><img src="./images/website.svg" alt=""></a>
+                        <a href="https://www.facebook.com/codersgyan"><img src="./images/facebook.svg" alt=""></a>
+                        <a href="https://twitter.com/CoderGyan"> <img src="./images/twitter.svg" alt=""></a>
+                        <a href="#"> <img src="./images/pintrest.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="services">
+            <div class="container">
+                <h1 class="section-heading"><span>Our </span>Services</h1>
+                <p>We provide high standar clean website for your business solutions</p>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img src="./images/brush.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/code.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/bag.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/desktop.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/media.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <img src="./images/phone.svg" alt="">
+                        <h2>Graphic Design</h2>
+                        <p>There are many variations of passages of but the majority have suffered alteration in some
+                            form.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="freelancer">
+            <h1>I Am Available For Freelancer.</h1>
+            <p>We provide high standar clean website for your business solutions</p>
+            <button class="btn btn-primary">Download CV</button>
+        </section>
+        <section class="reviews">
+            <div class="container">
+                <h1 class="section-heading"><span>Our</span> Client</h1>
+                <p>We provide high standar clean website for your business solutions</p>
+                <div class="slider">
+                    <div class="slide">
+                        <img src="./images/lady.png" alt="">
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum"</p>
+                        <span>- John Doel, Company ABC</span>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/lady.png" alt="">
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum"</p>
+                        <span>- John Doel, Company ABC</span>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/lady.png" alt="">
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum"</p>
+                        <span>- John Doel, Company ABC</span>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/lady.png" alt="">
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum"</p>
+                        <span>- John Doel, Company ABC</span>
+                    </div>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+        </section>
+
+        <section id="work" class="work">
+            <div class="container">
+                <h1 class="section-heading"><span>Our</span> Works</h1>
+                <p>We provide high standar clean website for your business solutions</p>
+
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                    <div class="card">
+                        <div class="overlay">
+                            <span>Category</span>
+                            <a href="#">Web development</a>
+                        </div>
+                        <img src="./images/ph-1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="blog" class="blog">
+            <div class="container">
+                <h1 class="section-heading"><span>Our</span> Blog</h1>
+                <p>We provide high standar clean website for your business solutions</p>
+
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="img-wrapper">
+                            <img src="./images/article-ph-1.png" alt="">
+                        </div>
+                        <div class="card-content">
+                            <a href="#">
+                                <h1>Occusamus et iusto odio</h1>
+                            </a>
+                            <span>May 12, 2017</span>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                deserunt
+                                mollit anim id est laborum.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img-wrapper">
+                            <img src="./images/article-ph-1.png" alt="">
+                        </div>
+                        <div class="card-content">
+                            <a href="#">
+                                <h1>Occusamus et iusto odio</h1>
+                            </a>
+                            <span>May 12, 2017</span>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                deserunt
+                                mollit anim id est laborum.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="img-wrapper">
+                            <img src="./images/article-ph-1.png" alt="">
+                        </div>
+                        <div class="card-content">
+                            <a href="#">
+                                <h1>Occusamus et iusto odio</h1>
+                            </a>
+                            <span>May 12, 2017</span>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                deserunt
+                                mollit anim id est laborum.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact">
+            <div class="container">
+                <h1 class="section-heading">Contact <span>Us</span></h1>
+                <p>We provide high standar clean website for your business solutions</p>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img src="./images/phone-2.svg" alt="">
+                        <h1>Call Us On</h1>
+                        <h6>+985 123 7856</h6>
+                    </div>
+                    <div class="card">
+                        <img src="./images/msg.svg" alt="">
+                        <h1>Email Us At</h1>
+                        <h6>support@companyname.com</h6>
+                    </div>
+                    <div class="card">
+                        <img src="./images/map.svg" alt="">
+                        <h1>Visit Office</h1>
+                        <h6>99 S.t Jomblo Park Pekanbaru 28292. Indonesia</h6>
+                    </div>
+
+                </div>
+
+                <form action="">
+                    <div class="input-wrap">
+                        <input type="text" placeholder="Your Name *">
+                        <input type="email" placeholder="Your Email *">
+                    </div>
+                    <div class="input-wrap-2">
+                        <input type="text" placeholder="Your Subject...">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message..."></textarea>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <footer>
+            <img class="footer-logo" src="./images/logo-2.svg" alt="">
+            <div class="footer-socials">
+                <a href="#"><img src="./images/website.svg" alt=""></a>
+                <a href="https://www.facebook.com/codersgyan"><img src="./images/facebook.svg" alt=""></a>
+                <a href="https://twitter.com/CoderGyan"> <img src="./images/twitter.svg" alt=""></a>
+                <a href="#"> <img src="./images/pintrest.svg" alt=""></a>
+                <a href="https://www.instagram.com/codersgyan/"> <img src="./images/instagram.svg" alt=""></a>
+            </div>
+            <div class="copyright">
+                Copyright 2024 © Abhiksha's home
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./js/app.js"></script>
+
+
+
+    <script>
+        function togglePopup() {
+          var popupForm = document.getElementById("popup-form");
+          popupForm.style.display = (popupForm.style.display === "block") ? "none" : "block";
+    
+          var whatsappIcon = document.getElementById("whatsapp-icon");
+          var whatsappIconSymbol = whatsappIcon.querySelector("span");
+    
+          if (popupForm.style.display === "block") {
+            // If popup is displayed, change WhatsApp icon to close icon with animation
+            whatsappIconSymbol.innerHTML = "&#10005;";
+            whatsappIconSymbol.style.transform = "rotate(45deg)";
+          } else {
+            // If popup is hidden, change back to WhatsApp icon with animation
+            whatsappIconSymbol.innerHTML = '<i class="fi fi-brands-whatsapp"></i>';
+            whatsappIconSymbol.style.transform = "rotate(0deg)";
+          }
+        }
+      </script>
+    
+
+
+</body>
+
+</html>
